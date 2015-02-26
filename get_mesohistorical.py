@@ -79,11 +79,11 @@ for i in range(1,len(sndata)):
     lon = sndata[i,4]
     elev = sndata[i,5]
 
-    temp = np.where(np.asarray(sndata[i,tdry_idxs], dtype=float) <= -991.0, '--', sndata[i,tdry_idxs])
-    dwpc = np.where(np.asarray(sndata[i,tdew_idxs], dtype=float) <= -991.0, '--', sndata[i,tdew_idxs])
-    wdir = np.where(np.asarray(sndata[i,wdir_idxs], dtype=float) <= -991.0, '--', sndata[i,wdir_idxs])
-    wspd = np.where(np.asarray(sndata[i,wspd_idxs], dtype=float) <= -991.0, '--', sndata[i,wspd_idxs])
-    hght = np.where(np.asarray(sndata[i,hght_idxs], dtype=float) <= -991.0, '--', sndata[i,hght_idxs])
+    temp = np.where(np.asarray(sndata[i,tdry_idxs], dtype=float) <= -991.0, -999.0, sndata[i,tdry_idxs])
+    dwpc = np.where(np.asarray(sndata[i,tdew_idxs], dtype=float) <= -991.0, -999.0, sndata[i,tdew_idxs])
+    wdir = np.where(np.asarray(sndata[i,wdir_idxs], dtype=float) <= -991.0, -999.0, sndata[i,wdir_idxs])
+    wspd = np.where(np.asarray(sndata[i,wspd_idxs], dtype=float) <= -991.0, -999.0, sndata[i,wspd_idxs])
+    hght = np.where(np.asarray(sndata[i,hght_idxs], dtype=float) <= -991.0, -999.0, sndata[i,hght_idxs])
     if len(hght) < len(wspd):
         hght = np.concatenate(([elev], hght))
     for j in range(len(hght)):
