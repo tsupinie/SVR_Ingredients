@@ -16,6 +16,7 @@ import copy
 from datetime import datetime, timedelta
 import cPickle
 from math import floor
+import os
 
 moisture_stns_obs   = ['MMMD', '76692', 'KBRO', 'KCRP', 'KLCH', 'KLIX', 'KTLH'] 
 lapse_rate_stns_obs = ['KABQ', 'KEPZ', 'KAMA', 'KDNR', 'KMAF', 'KRIW', 'KFGZ', 'KTUS', 'KGJT']
@@ -301,7 +302,10 @@ def main():
     good_shear_thresh = 55.
 
     buf_file_name = 'buf_files.pkl'
-    buf_files = cPickle.load(open(buf_file_name, 'r'))
+    if os.path.exists(buf_file_name):
+        buf_files = cPickle.load(open(buf_file_name, 'r'))
+    else:
+        buf_files = {}
     obs_profs = {}
 
     dt_start = copy.copy(dt)

@@ -90,7 +90,7 @@ for i in range(1,len(sndata)):
         if pres[j] == 'SFC':
             continue
         string = ','.join([wmoid, station, lat, lon, elev, pres[j], temp[j], dwpc[j], hght[j], wspd[j], wdir[j]])
-        print string
+#       print string
         n.write(string + '\n')
 n.close()
 
